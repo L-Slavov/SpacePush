@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'CantarellRegular';
+  src: url("../fonts/Cantarell-Regular-webfont.eot");
+  src: url("../fonts/Cantarell-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Cantarell-Regular-webfont.woff") format("woff"), url("../fonts/Cantarell-Regular-webfont.ttf") format("truetype"), url("../fonts/Cantarell-Regular-webfont.svg#CantarellRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CantarellBold';
+  src: url("../fonts/Cantarell-Bold-webfont.eot");
+  src: url("../fonts/Cantarell-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Cantarell-Bold-webfont.woff") format("woff"), url("../fonts/Cantarell-Bold-webfont.ttf") format("truetype"), url("../fonts/Cantarell-Bold-webfont.svg#CantarellBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.clearfix{
+  zoom: 1;
+}
+
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+html,body,canvas,iframe{
+    margin:0;
+    padding:0;
+    background-color:#000;
+    overflow: hidden;
+}
+canvas{
+    z-index:0;
+    background-color: #81a0d9;
+}
+#left-angle-header{
+    border-style: solid;
+    border-width: 0 50px 50px 0;
+    border-color: rgba(0,0,0,0.7);
+    position: fixed;
+    right:70%;
+    border-style:inset;
+    -webkit-transform:rotate(360deg);
+}
+#header{
+    width:160px;
+    height: 50px;
+    line-height:50px;
+    background-color:rgba(0,0,0,0.7);
+    border-radius:30px 0 0 30px;
+    position:fixed;
+    top: 0;
+    padding-left:15px;
+    right: 0;
+    z-index:9999;
+}
+.view{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#intro-view{
+    background-image: url(../img/space.jpg);
+}
+.main-menu{
+    width: 100%;
+    margin:0 auto;
+    padding: 0;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main-menu {
+ padding-top: 17%;
+}
+
+.main-menu ul li a{
+    display: block;
+    background-color: rgba(255,255,255,0.4);
+    width: 30%;
+    margin:10px auto;
+    font-size: 17px;
+    padding:10px 20px;
+    color:#333;
+    text-align: center;
+    text-decoration: none;
+    font-family: "CantarellBold",Arial,sans-serif;
+    width: 200px;
+    border-radius:4px 4px 10px 10px;
+    -moz-border-radius:4px 4px 10px 10px;
+    -webkit-border-radius:4px 4px 10px 10px;
+    border-bottom:8px solid #333;
+    margin-bottom: 20px;
+    line-height: 27px;
+}
+
+.main-menu ul li a:hover{
+    background-color: rgba(255,255,255,0.7);
+}
+.console{
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+#gameSpace{
+    position: absolute;
+}

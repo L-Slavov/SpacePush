@@ -17,6 +17,9 @@ var app = {
 
             // loading the box image
             game.load.image('box','data:image.png;base64,' + boxImg );
+
+            // loading spritesheet of the explosion
+            //game.load.spritesheet('explosion', 'data:image/png;base64,'+explosionImg , 256, 128, 12);
             
         }
         
@@ -54,8 +57,7 @@ var app = {
                 var c = boxes.create(Math.random()*worldW,Math.random()*worldH,'box');
                 c.name = 'box' + i;
                 c.body.collideWorldBounds=true;
-                // c.body.immovable = true;
-                // c.body.bounce.y = 0.1;
+                c.body.immovable = true;
             }
             
             // set the world size ( equal to the size of the background image )
@@ -84,6 +86,22 @@ var app = {
             game.physics.arcade.collide(player, boxes);
             game.physics.arcade.collide(boxes);
 
+
+            player.body.velocity.x = 0;
+            player.body.velocity.y = 0;
+
+            if(direction === "right"){
+                player.rotation+=0.03;
+            }else{
+                player.rotation-=0.03;
+            }
+            if(player.rotation>0.3){
+                direction = "left";
+            }
+            if(player.rotation<-0.3){
+                direction = "right";
+            }
+
             if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 
                 // if is pressed top arrow
@@ -91,7 +109,7 @@ var app = {
                 player.body.velocity.y = 0;
 
                 // turn player to left
-                player.scale.x=-1;
+                // player.scale.x=-1;
 
             }else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 
@@ -99,9 +117,6 @@ var app = {
 
                 player.body.velocity.x = playerSpeed;
                 player.body.velocity.y = 0;
-
-                // turn player to right
-                player.scale.x=1;
 
             }else if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
 
@@ -115,6 +130,7 @@ var app = {
                 // go down
                 player.body.velocity.y = playerSpeed;
                 player.body.velocity.x = 0;
+
             }
         }
 
@@ -157,6 +173,7 @@ var app = {
             var player;
             var playerSpeed = 150;
             var boxes;
+            var direction = "right";
             
 
             // screen size getting the window size

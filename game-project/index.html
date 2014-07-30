@@ -9,8 +9,8 @@
         <title>SpacePush</title>
     </head>
     <body>
-        
-        
+
+
         <div class="view" id="intro-view">
             <nav class="main-menu">
                 <ul>
@@ -23,15 +23,23 @@
                 </ul>
             </nav>
         </div>
-        
+
         <div class="view" id="game-view">
             <div id="header" class="clearfix">
                 <p class="timer">60:00</p>
             </div>
-            <div class="console"></div>
+            <div class="console">
+                <div class="cmd">
+                    <p></p>
+                    <input type="text" name="cmd" placeholder="command"/>
+                </div>
+                <div class="commands">
+
+                </div>
+            </div>
             <div id="gameSpace"></div>
         </div>
-        
+
         <!-- // <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/images.js"></script>
@@ -40,22 +48,22 @@
         <script type="text/javascript">
             // layout js
 
-            var initialized=false; // is game initialized
-            
+            var initialized = false; // is game initialized
+
             // resizing views to fit the screen
             $(".view").css({
-                'width':$(window).width(),
-                'height':$(window).height()
+                'width': $(window).width(),
+                'height': $(window).height()
             });
-            
+
             $(".main-menu").css({
-                'height':$(window).height()
+                'height': $(window).height()
             });
 
             // calculate console width
             $(".console").css({
-                "width":(0.2*$(window).width()),
-                "height":$(window).height()
+                "width": (0.2 * $(window).width()),
+                "height": $(window).height()
             });
 
 
@@ -64,39 +72,44 @@
             worldH = 2000;
 
             $("#gameSpace").css({
-                "left":$(".console").width()
+                "left": $(".console").width()
             });
-            
+
             // game view with canvas - hidden when loading the app at first time
             $(".view#game-view").hide();
-            
-            
+
+
             // loading the background sound
             var bgSound;
-			bgSound = new Audio('playing.mp3');
-            bgSound.volume=0.8;
+            bgSound = new Audio('playing.mp3');
+            bgSound.volume = 0.8;
             bgSound.addEventListener('ended', soundEnd, false);
 
 
-            
-			
-            function soundEnd(){
+
+
+            function soundEnd() {
                 // called when the background sound ends to play it again in a loop
                 bgSound = new Audio('playing.mp3');
-                bgSound.volume=0.8;
+                bgSound.volume = 0.8;
                 bgSound.play();
                 bgSound.addEventListener('ended', soundEnd, false);
             }
-            
+
             // on clicking the start button
-            $("a.start-game").click(function(e){
-                $(".view").each(function(){
+            $("a.start-game").click(function(e) {
+                $(".view").each(function() {
                     $(this).toggle();
-                    app.initialize(playerImg,boxImg,bgImg,bgOverlayImg,worldW,worldH);
+                    app.initialize(playerImg, boxImg, bgImg, bgOverlayImg, worldW, worldH);
+                    $('.console .cmd input').focus();
                 });
                 e.preventDefault();
             });
-            
+                
+            $('.console').click(function() {
+                $('.console input').focus();
+            });
+
         </script>
     </body>
 </html>
